@@ -1,63 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>code-quiz</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/style.css">
 </head>
+
 <body>
-<header>
-    <div class="container">
-        <div class="float-left">View HighScores</div>
-        <div class="float-right">0</div>
-        <br></br>
-</header>
-        
-    <div class = "container">
+    <header>
+        <div class="container">
+            <div class="float-left" id="HighScores">View HighScores</div>
+            <div class="float-right" id="timer">60 seconds remaining</div>
+            <br></br>
+    </header>
 
-        <h2 class='text-center font-weight-bold' id="question">Coding Quiz Challenge</h2>
-    <div  id="info">
-        <h4 class='text-center'>Try to answer the following code-related questions within the time limit.Keep in mind that incorrect answers penalize your score time by 10 seconds<br></br>
-        <button type="button" id="startBtn" class="btn btn-primary btn-lg">Start</button>
-       
-        </h4>
-    </div>
-        <button type="button" id="testBtn1" class="btn btn-primary btn-lg">test1</button><br></br>
-        <button type="button" id="testBtn2" class="btn btn-primary btn-lg">test2</button><br></br>
-        <button type="button" id="testBtn3" class="btn btn-primary btn-lg">test3</button><br></br>
-        <button type="button" id="testBtn4" class="btn btn-primary btn-lg">test4</button><br></br>
-       
-    </div>
+    <main class="container">
+        <div id="info">
+            <h2 class='text-center font-weight-bold' id="question">Coding Quiz Challenge<br></br>Try to answer the
+                following code-related questions within the time limit.Keep in mind that incorrect answers penalize your
+                score time by 10 seconds<br></br>
 
-    
-    </div>
+                <button type="button" id="startBtn" class="btn btn-primary btn-lg">Start</button></h2>
+            <br></br>
+
+            <button type="button" id="answerBtn1" class="btn btn-primary btn-lg">Answer1</button><br></br>
+            <button type="button" id="answerBtn2" class="btn btn-primary btn-lg">Answer2</button><br></br>
+            <button type="button" id="answerBtn3" class="btn btn-primary btn-lg">Answer3</button><br></br>
+            <button type="button" id="answerBtn4" class="btn btn-primary btn-lg">Answer4</button><br></br>
+            <h3 class="text-center" id="Correct">Correct</h3>
+            <h3 class="text-center" id="Wrong">Wrong</h3>
 
 
 
 
+            </main>
+        <script src="assets/script.js"></script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="assets/script.js"></script>
-
-    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script> -->
 </body>
+
 </html>
