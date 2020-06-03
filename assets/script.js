@@ -41,7 +41,14 @@ var q3a4 = "4. all of the above"
 //       { text: 'alerts', correct: true },
 //       { text: 'numbers', correct: false },
 //     ]
-//   },
+//   }]
+//   console.log(questions);
+//   console.log(questions[0].answers);
+//   console.log(questions[0].question);
+//   console.log(questions[0].answers[0]);
+//   console.log(questions[0].answers[0].text);
+
+
 //   {
 //     question: 'The condition in an if/else statement is enclosed with :',
 //     answers: [
@@ -86,7 +93,7 @@ var q3a4 = "4. all of the above"
 
 
 // function nextQuestion(){
-//   var q = ["question1","question2","question3","question4","question5"];
+//var q = ["question1","question2","question3","question4","question5"];
 //   var a = ["ans1","ans2","ans3","ans4"];
 //   for (var i=0; i<q.length; i++){
 //         question.innerText=q[i]
@@ -146,6 +153,7 @@ function countdown() {
 startBtn.addEventListener("click", function () {
   info.style.visibility = "visible"
   startBtn.style.visibility = "hidden"
+  countdown()
 
   question.innerText = q1
   btn1.innerText = q1a1
