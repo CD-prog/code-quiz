@@ -7,12 +7,19 @@ var btn3 = document.getElementById("answerBtn3")
 var btn4 = document.getElementById("answerBtn4")
 var correct = document.getElementById("Correct")
 var wrong = document.getElementById("Wrong")
+var HighScores = document.getElementById("HighScores")
 
 info.style.visibility = "hidden"
 startBtn.style.visibility = "visible"
 question.style.visibility = "visible"
 correct.style.visibility = "hidden"
 wrong.style.visibility = "hidden"
+
+var ca = 0;
+var wa = 0;
+
+
+
 
 let currentIndex = -1;
 const questions = [
@@ -73,7 +80,9 @@ function correctAnswer() {
       correct.style.visibility = "hidden"
       renderQuestion()
     }
-  }, 50)
+  }, 50);
+  ca++;
+  HighScores.innerText=("Correct "+ca+" Wrong "+wa)
 }
 
 
@@ -88,7 +97,9 @@ function wrongAnswer() {
       wrong.style.visibility = "hidden"
       renderQuestion()
     }
-  }, 50)
+  }, 50);
+  wa++;
+  HighScores.innerText=("Correct "+ca+" Wrong "+wa)
 }
 
 function countdown() {
@@ -135,6 +146,8 @@ startBtn.addEventListener("click", function () {
   startBtn.style.visibility = "hidden"
   countdown()
   renderQuestion();
+  HighScores.innerText=("Correct "+ca+" Wrong "+wa)
+   
 })
 
 
