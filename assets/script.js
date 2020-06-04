@@ -83,7 +83,7 @@ function correctAnswer() {
   if (total === 5) {
     info.style.visibility = "hidden"
     question.innerText = "Game Over !"
-
+    timer.style.visibility = "hidden"
   }
 }
 
@@ -107,8 +107,7 @@ function wrongAnswer() {
   if (total === 5) {
     info.style.visibility = "hidden"
     question.innerText = "Game Over !"
-
-
+    timer.style.visibility = "hidden"
   }
 }
 
