@@ -14,100 +14,54 @@ question.style.visibility = "visible"
 correct.style.visibility = "hidden"
 wrong.style.visibility = "hidden"
 
-var q1 = "Commonly used data types DO NOT include :"
-var q1a1 = "1. strings"
-var q1a2 = "2. booleans"
-var q1a3 = "3. alerts"
-var q1a4 = "4. numbers"
-
-var q2 = "The condition in an if/else statement is enclosed with :"
-var q2a1 = "1. quotes"
-var q2a2 = "2. curly brackets"
-var q2a3 = "3. parentheses"
-var q2a4 = "4. square brackets"
-
-var q3 = "Arrays in JavaScript can be used to store"
-var q3a1 = "1. numbers and strings"
-var q3a2 = "2. other arrays"
-var q3a3 = "3. booleans"
-var q3a4 = "4. all of the above"
-
-// const questions = [
-//   {
-//     question: 'Commonly used data types DO NOT include :',
-//     answers: [
-//       { text: 'strings', correct: false },
-//       { text: 'booleans', correct: false },
-//       { text: 'alerts', correct: true },
-//       { text: 'numbers', correct: false },
-//     ]
-//   }]
-//   console.log(questions);
-//   console.log(questions[0].answers);
-//   console.log(questions[0].question);
-//   console.log(questions[0].answers[0]);
-//   console.log(questions[0].answers[0].text);
-
-
-//   {
-//     question: 'The condition in an if/else statement is enclosed with :',
-//     answers: [
-//       { text: 'quotes', correct: false },
-//       { text: 'curly brackets', correct: false },
-//       { text: 'parentheses', correct: true },
-//       { text: 'square brackets', correct: false }
-//     ]
-//   },
-//   {
-//     question: 'Arrays in JavaScript can be used to store',
-//     answers: [
-//       { text: 'numbers and strings', correct: false },
-//       { text: 'other arrays', correct: false },
-//       { text: 'booleans', correct: false },
-//       { text: 'all of the above', correct: true }
-//     ]
-//   },
-//   {
-//     question: '"String values must be enclosed within ____ when being assigned to variables',
-//     answers: [
-//       { text: 'commas', correct: false },
-//       { text: 'curly brackets', correct: false },
-//       { text: 'quotes', correct: true },
-//       { text: 'parentheses', correct: false },
-//     ]
-//   },
-//   {
-//     question: '"A very useful tool used during development and debugging for printing content to the debugger is:',
-//     answers: [
-//       { text: 'JavaScript', correct: false },
-//       { text: 'terminal/bash', correct: false },
-//       { text: 'for loops', correct: false },
-//       { text: 'console.log', correct: true },
-//     ]
-//   }
-// ]
-
-
-
-
-
-
-// function nextQuestion(){
-//var q = ["question1","question2","question3","question4","question5"];
-//   var a = ["ans1","ans2","ans3","ans4"];
-//   for (var i=0; i<q.length; i++){
-//         question.innerText=q[i]
-
-
-//   }
-//  }
-
-
-
-
-
-
-
+let currentIndex = -1;
+const questions = [
+  {
+    question: 'Commonly used data types DO NOT include :',
+    answers: [
+      { text: 'strings', correct: false },
+      { text: 'booleans', correct: false },
+      { text: 'alerts', correct: true },
+      { text: 'numbers', correct: false },
+    ]
+  },
+  {
+    question: 'The condition in an if/else statement is enclosed with :',
+    answers: [
+      { text: 'quotes', correct: false },
+      { text: 'curly brackets', correct: false },
+      { text: 'parentheses', correct: true },
+      { text: 'square brackets', correct: false }
+    ]
+  },
+  {
+    question: 'Arrays in JavaScript can be used to store',
+    answers: [
+      { text: 'numbers and strings', correct: false },
+      { text: 'other arrays', correct: false },
+      { text: 'booleans', correct: false },
+      { text: 'all of the above', correct: true }
+    ]
+  },
+  {
+    question: '"String values must be enclosed within ____ when being assigned to variables',
+    answers: [
+      { text: 'commas', correct: false },
+      { text: 'curly brackets', correct: false },
+      { text: 'quotes', correct: true },
+      { text: 'parentheses', correct: false },
+    ]
+  },
+  {
+    question: '"A very useful tool used during development and debugging for printing content to the debugger is:',
+    answers: [
+      { text: 'JavaScript', correct: false },
+      { text: 'terminal/bash', correct: false },
+      { text: 'for loops', correct: false },
+      { text: 'console.log', correct: true },
+    ]
+  }
+]
 function correctAnswer() {
   var timeLeft = 25;
   var timeInterval = setInterval(function () {
@@ -117,6 +71,7 @@ function correctAnswer() {
     if (timeLeft === 0) {
       clearInterval(timeInterval);
       correct.style.visibility = "hidden"
+      renderQuestion()
     }
   }, 50)
 }
@@ -131,6 +86,7 @@ function wrongAnswer() {
     if (timeLeft === 0) {
       clearInterval(timeInterval);
       wrong.style.visibility = "hidden"
+      renderQuestion()
     }
   }, 50)
 }
@@ -148,55 +104,37 @@ function countdown() {
 }
 
 
+function renderQuestion (){
+  currentIndex++;
+  question.innerText = questions[currentIndex].question
+  btn1.innerText = questions[currentIndex].answers[0].text
+  btn2.innerText = questions[currentIndex].answers[1].text
+  btn3.innerText = questions[currentIndex].answers[2].text
+  btn4.innerText = questions[currentIndex].answers[3].text
 
+
+}
+
+document.addEventListener('click', function(evt){
+  if(evt.target.classList.contains('answer-btn')) {
+    // console.log('You clicked and I should do something');
+    // console.log(evt.target.getAttribute('data-id'));
+    var isCorrect = questions[currentIndex].answers[evt.target.getAttribute("data-id")].correct;
+    if (isCorrect){
+      correctAnswer()
+    } else{
+      wrongAnswer();
+    }
+
+    
+  }
+});
 
 startBtn.addEventListener("click", function () {
   info.style.visibility = "visible"
   startBtn.style.visibility = "hidden"
   countdown()
-
-  question.innerText = q1
-  btn1.innerText = q1a1
-  btn2.innerText = q1a2
-  btn3.innerText = q1a3
-  btn4.innerText = q1a4
-
-  btn1.addEventListener("click", function () {
-    wrongAnswer();
-
-    question.innerText = q2
-    btn1.innerText = q2a1
-    btn2.innerText = q2a2
-    btn3.innerText = q2a3
-    btn4.innerText = q2a4
-  })
-
-  btn2.addEventListener("click", function () {
-    wrongAnswer()
-    question.innerText = q2
-    btn1.innerText = q2a1
-    btn2.innerText = q2a2
-    btn3.innerText = q2a3
-    btn4.innerText = q2a4
-  })
-
-  btn3.addEventListener("click", function () {
-    correctAnswer()
-    question.innerText = q2
-    btn1.innerText = q2a1
-    btn2.innerText = q2a2
-    btn3.innerText = q2a3
-    btn4.innerText = q2a4
-  })
-
-  btn4.addEventListener("click", function () {
-    wrongAnswer()
-    question.innerText = q2
-    btn1.innerText = q2a1
-    btn2.innerText = q2a2
-    btn3.innerText = q2a3
-    btn4.innerText = q2a4
-  })
+  renderQuestion();
 })
 
 
