@@ -119,6 +119,8 @@ function countdown() {
     if (timeLeft === 0) {
       clearInterval(timeInterval);
       timer.textContent = "Your time is up!"
+      info.style.visibility = "hidden"
+      question.innerText = "Game Over !"
     }
   }, 1000)
 }
