@@ -17,10 +17,6 @@ wrong.style.visibility = "hidden"
 
 var ca = 0;
 var wa = 0;
-
-
-
-
 let currentIndex = -1;
 const questions = [
   {
@@ -82,8 +78,15 @@ function correctAnswer() {
     }
   }, 50);
   ca++;
-  HighScores.innerText=("Correct "+ca+" Wrong "+wa)
+  HighScores.innerText = ("Correct " + ca + " Wrong " + wa)
+  var total = ca + wa;
+  if (total === 5) {
+    info.style.visibility = "hidden"
+    question.innerText = "Game Over !"
+
+  }
 }
+
 
 
 function wrongAnswer() {
@@ -99,7 +102,14 @@ function wrongAnswer() {
     }
   }, 50);
   wa++;
-  HighScores.innerText=("Correct "+ca+" Wrong "+wa)
+  HighScores.innerText = ("Correct " + ca + " Wrong " + wa)
+  var total = ca + wa;
+  if (total === 5) {
+    info.style.visibility = "hidden"
+    question.innerText = "Game Over !"
+
+
+  }
 }
 
 function countdown() {
@@ -114,40 +124,34 @@ function countdown() {
   }, 1000)
 }
 
-
-function renderQuestion (){
+function renderQuestion() {
   currentIndex++;
   question.innerText = questions[currentIndex].question
   btn1.innerText = questions[currentIndex].answers[0].text
   btn2.innerText = questions[currentIndex].answers[1].text
   btn3.innerText = questions[currentIndex].answers[2].text
   btn4.innerText = questions[currentIndex].answers[3].text
-
-
 }
 
-document.addEventListener('click', function(evt){
-  if(evt.target.classList.contains('answer-btn')) {
+document.addEventListener('click', function (evt) {
+  if (evt.target.classList.contains('answer-btn')) {
     // console.log('You clicked and I should do something');
     // console.log(evt.target.getAttribute('data-id'));
     var isCorrect = questions[currentIndex].answers[evt.target.getAttribute("data-id")].correct;
-    if (isCorrect){
+    if (isCorrect) {
       correctAnswer()
-    } else{
+    } else {
       wrongAnswer();
     }
-
-    
   }
 });
 
 startBtn.addEventListener("click", function () {
   info.style.visibility = "visible"
-  startBtn.style.visibility = "hidden"
   countdown()
   renderQuestion();
-  HighScores.innerText=("Correct "+ca+" Wrong "+wa)
-   
+  HighScores.innerText = ("Correct " + ca + " Wrong " + wa)
+
 })
 
 
