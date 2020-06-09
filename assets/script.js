@@ -8,16 +8,30 @@ var btn4 = document.getElementById("answerBtn4")
 var correct = document.getElementById("Correct")
 var wrong = document.getElementById("Wrong")
 var HighScores = document.getElementById("HighScores")
-
+var scoresTable = document.getElementById("scoresTable")
+HighScores.style.cursor = "pointer"
+scoresTable.style.display = "none"
 info.style.visibility = "hidden"
 startBtn.style.visibility = "visible"
 question.style.visibility = "visible"
 correct.style.visibility = "hidden"
 wrong.style.visibility = "hidden"
 
+// Toggle for HighScores list
+HighScores.addEventListener('click', function(){
+  var x = scoresTable;
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+})
+
 var ca = 0;
 var wa = 0;
 let currentIndex = -1;
+
+//Array of objects that contains the questions
 const questions = [
   {
     question: 'Commonly used data types DO NOT include :',
@@ -65,6 +79,7 @@ const questions = [
     ]
   }
 ]
+// Function for correct answer
 function correctAnswer() {
   var timeLeft = 25;
   var timeInterval = setInterval(function () {
@@ -86,9 +101,7 @@ function correctAnswer() {
     timer.style.visibility = "hidden"
   }
 }
-
-
-
+// Function for wrong answer
 function wrongAnswer() {
   var timeLeft = 25;
   var timeInterval = setInterval(function () {
@@ -110,7 +123,7 @@ function wrongAnswer() {
     timer.style.visibility = "hidden"
   }
 }
-
+// Timer for the quiz
 function countdown() {
   var timeLeft = 60;
   var timeInterval = setInterval(function () {
@@ -124,7 +137,7 @@ function countdown() {
     }
   }, 1000)
 }
-
+// Generates next question
 function renderQuestion() {
   currentIndex++;
   question.innerText = questions[currentIndex].question
@@ -133,11 +146,9 @@ function renderQuestion() {
   btn3.innerText = questions[currentIndex].answers[2].text
   btn4.innerText = questions[currentIndex].answers[3].text
 }
-
+// Checks chosen answer
 document.addEventListener('click', function (evt) {
   if (evt.target.classList.contains('answer-btn')) {
-    // console.log('You clicked and I should do something');
-    // console.log(evt.target.getAttribute('data-id'));
     var isCorrect = questions[currentIndex].answers[evt.target.getAttribute("data-id")].correct;
     if (isCorrect) {
       correctAnswer()
@@ -146,7 +157,7 @@ document.addEventListener('click', function (evt) {
     }
   }
 });
-
+// Starts the game
 startBtn.addEventListener("click", function () {
   info.style.visibility = "visible"
   countdown()
